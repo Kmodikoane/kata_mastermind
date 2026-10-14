@@ -1,11 +1,11 @@
 import unittest
-from compare_codes import *
+from compare_codes import code_comparison
 
 class Test_compare_code(unittest.TestCase):
 
-    def any_test(self):
-        with self.assertRaises(TypeError):
-            code_generator()
+    def test_independent_of_case(self):
+        with self.assertTrue(code_comparison("red", "Green", "PINK", "whITe"), ("red", "green", "pink", "white")):
+            code_comparison()
 
 
 

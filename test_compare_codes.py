@@ -7,13 +7,20 @@ class Test_compare_code(unittest.TestCase):
         self.assertTrue(code_comparison(("red", "Green", "PINK", "whITe")), ("red", "green", "pink", "white"))
 
     def test_one_correct(self):
-        self.asserFale(code_comparison())
+        self.assertFalse(code_comparison(("WHITE", "black", "Olive", "purPLE")))
 
     def test_two_correct(self):
-        self.asserFale(code_comparison())
+        self.assertFalse(code_comparison(("green", "white")))
+        self.assertFalse(code_comparison(("Black", "GREEN", "purPLE", "white")))
 
     def test_three_correct(self):
-        self.asserFale(code_comparison())
+        self.assertFalse(code_comparison(("green", "white", "red", "navy")))
+
+    def test_colour_notIn_options(self):
+        self.assertFalse(code_comparison(("red", "Green", "PINK", "orange")))
+
+    def test_colour_inOptions(self):
+        pass
 
 
 

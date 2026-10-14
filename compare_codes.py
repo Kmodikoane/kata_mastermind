@@ -26,27 +26,35 @@ def code_comparison(guess):
     if guess_tuple_lower == actual_code:
         print("You guessed the code correctly!")
         return True
+    
+    if len(guess) > 4 or len(guess) < 4:
+        print("Ensure you have chosen for colours")
 
     #Handle different colour cases
-    count = 0
-    for colour in mutable_colour_options:
-        if colour in mutable_actual_code:
+
+    for colour in mutable_guess:
+        count = 0
+        if colour in mutable_colour_options:
             count +=1
-            if count == 4:
-                return True
-            elif count == 3:
-                print("So close! One color is incorrect")
-                return False
-            elif count == 2:
-                print("You only have 2 colour correct")
-                return False
-            elif count == 1:
-                print("You only got 1 out 4 color correct")
-                return False
-            else:
-                return False
-        else:
-            return False
+    
+    if colour in mutable_colour_options:
+        if colour not in mutable_actual_code:
+            count += 1
+        print(f"{count} out of your 4 colour code options is incorrrect")
+        return False
+
+    if count == 3:
+        print("So close! Only one value is incorrect")
+        return False
+    elif count == 2:
+        print("You only got half of the colours correct")
+        return False
+    elif count == 1:
+        print("You only got 1 out of 4 colours correct")
+        return False
+    else:
+        print(f"One or more colours are not in the options: {colour_options}")
+        return False
 
     
 
@@ -66,5 +74,5 @@ def code_comparison(guess):
 
 #     print(mutable_guess)
 
-code_comparison(("red", "Green", "PINK", "whITe"))
+code_comparison(("red", "Green"))
     
